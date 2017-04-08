@@ -4,17 +4,21 @@ batch_name:
   # yaml to use for this batch
   yaml: "path/to/some/yaml/file"
   input_dir: "path/with/regex/to/some/dir*matching_file_names*.phot"
-  # how to fill in any missing settings:
+  # you can use regex, like in the input_dir example, you could do some sort of pattern matching for files
   # variables that can be used include
     # NUMB - number of this run in the batch, start at 0
     # NUMT - number of this run in total, start at 0
     # NUMR - number of times this file has been run, if this first time then 0
     # FILE - name of original photFile
-  # also you can use regex 
+    # STAMP - timestamp of run in format START:COMPLETE
+  # where to output to:
+  output_dir: "path/with/regex/to/some/dir*NUMB:FILE/FILE_NUMR"
+  # then fill in any missing settings, stuff left blank in the example yaml because it's file specific
   # for example,
   main_sequence.msRgbModel: "NUMR"
   # so then if you run this batch 5 times, it will try a different sampling
-  # method each time
+  # method each time.
+  # how to handle different exit codes:
   codes:
     first:
       exit: 0
@@ -22,6 +26,8 @@ batch_name:
     second:
       exit: 1
       # etc
+      # maybe some sort of logging settings?
+      # or some sort of rerun settings
 
 # define multiple such batches
 # then run the code from command line like this:
