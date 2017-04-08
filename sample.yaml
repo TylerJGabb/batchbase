@@ -1,0 +1,29 @@
+# sample yaml
+batch_name:
+  number: 0
+  # yaml to use for this batch
+  yaml: "path/to/some/yaml/file"
+  input_dir: "path/with/regex/to/some/dir*matching_file_names*.phot"
+  # how to fill in any missing settings:
+  # variables that can be used include
+    # NUMB - number of this run in the batch, start at 0
+    # NUMT - number of this run in total, start at 0
+    # NUMR - number of times this file has been run, if this first time then 0
+    # FILE - name of original photFile
+  # also you can use regex 
+  # for example,
+  main_sequence.msRgbModel: "NUMR"
+  # so then if you run this batch 5 times, it will try a different sampling
+  # method each time
+  codes:
+    first:
+      exit: 0
+      # some settings on what to do if you get exit code 0
+    second:
+      exit: 1
+      # etc
+
+# define multiple such batches
+# then run the code from command line like this:
+  # batchbase [path to this yaml] [batches:[0:43,48:90,1000,1000000:2000000]]
+  # leave the batches option blank to just run all the batches in the yaml
