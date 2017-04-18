@@ -2,16 +2,33 @@
 import sys
 import yaml
 
+num = 0
+
 # instructions for an individual batch
 class batch:
-	def __init__(self, name, salary):
+	def __init__(self, yaml, input_dir,\
+		output_dir, additional_settings, codes):
 		# set up a batch
-	def run:
+		# what number batch is this in our list of batches to perform
+		global num 
+		num += 1
+		self.number = num
+		self.yaml = yaml
+		self.input_dir = input_dir
+		self.output_dir = output_dir
+		self.additional_settings = additional_settings
+		self.codes = codes
+	# def run:
 		# run the instructions for this batch
-		
+
 # read the yaml file
 def parse_yaml(yaml):
-	print('hello')
+	for yaml_batch in yaml:
+		this_batch = batch(yaml[yaml_batch]['yaml'],\
+			yaml[yaml_batch]['input_dir'],\
+			yaml[yaml_batch]['output_dir'],\
+			[setting for setting in yaml[yaml_batch]['additional_settings']],
+			[code for code in yaml[yaml_batch]['codes']])
 
 # handle command line args
 def main(argv):
