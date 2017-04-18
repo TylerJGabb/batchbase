@@ -2,6 +2,13 @@
 import sys
 import yaml
 
+# instructions for an individual batch
+class batch:
+	def __init__(self, name, salary):
+		# set up a batch
+	def run:
+		# run the instructions for this batch
+		
 # read the yaml file
 def parse_yaml(yaml):
 	print('hello')
