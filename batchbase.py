@@ -30,6 +30,13 @@ def parse_yaml(yaml):
 			[setting for setting in yaml[yaml_batch]['additional_settings']],
 			[code for code in yaml[yaml_batch]['codes']])
 
+		print('yaml file: ' + yaml[yaml_batch]['yaml'])
+		print('input dir: ' + yaml[yaml_batch]['input_dir'])
+		for setting in yaml[yaml_batch]['additional_settings']:
+			print('setting: ' + setting)
+		for code in yaml[yaml_batch]['codes']:
+			print('code: ' + code)
+
 # handle command line args
 def main(argv):
 	with open(argv[0]) as stream:
